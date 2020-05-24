@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,8 +26,13 @@ public class ProyectoBancaTest {
                  "A1", 7222, 18);
     private static Cuenta cuenta1=new Cuenta(789,21,100,100,"21/04/2019");
 
+    /**
+     * Se crean los test para comprobar que el programa pasa por el método
+     * "crearPerfil()". Se crea un perfil y se comprueba que pasa por los diferentes
+     * caminos del método con los asserts
+     */
     @Test
-    public void crearCienteTest() {
+    public void crearClienteTest() {
         
         gestor1.crearPerfil("Maria", "Nunez", "Enriquez", "calle",
                  "123A", 7222, 18);
@@ -40,6 +46,11 @@ public class ProyectoBancaTest {
         assertTrue(gestor1.getClientes().get(0).getEdad() == 18);
     }
     
+    /**
+     *Se crean los test para comprobar que el programa pasa por el método
+     * "modificarPerfil()". Se le modifican los datos a un perfil ya creado, y se
+     * comprueba su eficacia con los asserts
+     */
     @Test
     public void modificarClienteTest() {
         
@@ -54,6 +65,11 @@ public class ProyectoBancaTest {
         assertTrue(gestor1.getClientes().get(0).getEdad() == 20);
     }
     
+    /**
+     *Se crean los test para comprobar que el programa pasa por el método
+     * "crearCuenta()". Se crea una cuenta y se comprueba que pasa por los diferentes
+     * caminos del método con los asserts
+     */
     @Test
     public void crearCuentaTest(){
         
@@ -68,12 +84,22 @@ public class ProyectoBancaTest {
 
     }
     
+    /**
+     * Se crean los test para comprobar que el programa pasa por el método
+     * "ingresarDinero()". Se ingresa dinero en una cuenta  y se comprueba que 
+     * pasa por los diferentes caminos del método con los asserts
+     */
     @Test
     public void ingresarDineroTest(){
         cliente1.ingresarDinero(1, 10);
         assertTrue(cliente1.getCuentas().get(0).getSaldo() == 110 );
     }
     
+    /**
+     * Se crean los test para comprobar que el programa pasa por el método
+     * "retirarDinero()". Se saca dinero de una cuenta y se comprueba que pasa 
+     * por los diferentes caminos del método con los asserts
+     */
     @Test
     public void retirarDineroTest(){
         cliente1.retirarDinero(1, 10);
