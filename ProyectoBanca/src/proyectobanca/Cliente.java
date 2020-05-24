@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectobanca;import java.util.ArrayList;
+package proyectobanca;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  *
  * @author maria
  */
-
-
 public class Cliente {
 
     private String nombre;
@@ -68,13 +68,7 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public void ingresarDinero() {
-
-        System.out.println("Introduce el numero de cuenta ");
-        int numeroCuenta = sc.nextInt();
-
-        System.out.println("Introduce la cantidad a ingresar");
-        int cantidad = sc.nextInt();
+    public void ingresarDinero(int numeroCuenta, int cantidad) {
 
         for (int i = 0; i < cuentas.size(); i++) {
 
@@ -85,80 +79,49 @@ public class Cliente {
         }
     }
 
-    public void retirarDinero() {
-
-        System.out.println("Introduce el numero de cuenta ");
-        int numeroCuenta = sc.nextInt();
-
-        System.out.println("Introduce la cantidad a retirar");
-        int cantidad = sc.nextInt();
+    public void retirarDinero(int numeroCuenta, int cantidad) {
 
         for (int i = 0; i < cuentas.size(); i++) {
 
             if (cuentas.get(i).getNumCuenta() == numeroCuenta) {
 
-                if (cuentas.get(i).getSaldo() < cantidad) {
-                    System.out.println("No puede retirar esa cantidad, "
-                            + "no tiene suficiente dinero en la cuenta");
-                } else if (cuentas.get(i).getLimiteRetiradaCajero() > cantidad) {
-                    System.out.println("No puede retirar esa cantidad. Ha superado"
-                            + "el límite");
-                } else {
+                if (cuentas.get(i).getSaldo() > cantidad
+                        && cuentas.get(i).getLimiteRetiradaCajero() >= cantidad) {
+
                     cuentas.get(i).setSaldo(cuentas.get(i).getSaldo() - cantidad);
+                } else {
+                    System.out.println("No se ha podido realizar la operación");
                 }
 
             }
         }
     }
 
-    public void compraInternet() {
-
-        System.out.println("Introduce el numero de cuenta ");
-        int numeroCuenta = sc.nextInt();
-
-        System.out.println("Introduce el valor de la compra");
-        int cantidad = sc.nextInt();
+    public void compraInternet(int numeroCuenta, int cantidad) {
 
         for (int i = 0; i < cuentas.size(); i++) {
 
             if (cuentas.get(i).getNumCuenta() == numeroCuenta) {
 
-                if (cuentas.get(i).getSaldo() < cantidad) {
-                    System.out.println("No puede realizar esa compra, "
-                            + "no tiene suficiente dinero en la cuenta");
-                } else if (cuentas.get(i).getLimitePagoInternet() > cantidad) {
-                    System.out.println("No puede realizar esa cantidad. Ha superado"
-                            + "el límite");
-                } else {
+                if (cuentas.get(i).getSaldo() > cantidad
+                        && cuentas.get(i).getLimitePagoInternet() <= cantidad) {
                     cuentas.get(i).setSaldo(cuentas.get(i).getSaldo() - cantidad);
                     cuentas.get(i).setTotalCompra(cuentas.get(i).getTotalCompra() + cantidad);
+
                 }
 
             }
         }
     }
 
-
-    public void crearCuenta() {
-
-        System.out.println("Inserte el numero de cuenta");
-        int numCuenta = sc.nextInt();
-        System.out.println("Inserte el saldo");
-        int saldo = sc.nextInt();
-        System.out.println("Inserte el limite para retirar dinero");
-        int limiteDinero = sc.nextInt();
-        System.out.println("Inserte el limite para pagos por internet");
-        int limiteInternet = sc.nextInt();
-        System.out.println("Inserte la fecha de hoy");
-        String fechaHoy = sc.nextLine();
-
-        this.cuentas.add(new Cuenta(numCuenta, saldo, limiteDinero, limiteInternet, fechaHoy));
+    public void crearCuenta(int numCuenta, int saldo, int limiteDinero,
+            int limiteInternet, String fechaHoy) {
+        this.cuentas.add(new Cuenta(numCuenta, saldo, limiteDinero, limiteInternet,
+                fechaHoy));
 
     }
 
-    public void pagosInternet() {
-        System.out.println("Introduce el numero de cuenta ");
-        int numeroCuenta = sc.nextInt();
+    public void pagosInternet(int numeroCuenta) {
 
         for (int i = 0; i < cuentas.size(); i++) {
 
@@ -170,4 +133,3 @@ public class Cliente {
 
     }
 }
-
