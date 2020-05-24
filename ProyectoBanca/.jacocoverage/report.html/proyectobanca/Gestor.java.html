@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Gestor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ProyectoBanca&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">proyectobanca</a> &gt; <span class="el_source">Gestor.java</span></div><h1>Gestor.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package proyectobanca;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author maria
+ */
+<span class="fc" id="L15">public class Gestor {</span>
+      
+<span class="fc" id="L17">    Scanner sc = new Scanner (System.in);</span>
+    
+<span class="fc" id="L19">    private ArrayList &lt;Cliente&gt; clientes = new ArrayList();</span>
+
+    public ArrayList&lt;Cliente&gt; getClientes() {
+<span class="fc" id="L22">        return clientes;</span>
+    }
+    
+    
+    public void crearPerfil(String nombre, String apellido1, String apellido2, 
+            String direccion, String nif, int telefono, int edad){
+     
+<span class="fc" id="L29">        clientes.add(new Cliente(nombre,apellido1,apellido2,direccion,nif,telefono,edad));</span>
+<span class="fc" id="L30">    }</span>
+    
+    public void modificarCliente(String nifCliente, String nombre, String apellido1,
+            String apellido2, String direccion, String nuevoNif, int telefono, int edad){
+        
+        
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        for (int i = 0; i &lt; clientes.size(); i++) {</span>
+            
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            if(clientes.get(i).getNif().equalsIgnoreCase(nifCliente)){</span>
+                
+<span class="nc" id="L40">                clientes.get(i).setNombre(nombre);</span>
+<span class="nc" id="L41">                clientes.get(i).setApellido1(apellido1);</span>
+<span class="nc" id="L42">                clientes.get(i).setApellido2(apellido2);</span>
+<span class="nc" id="L43">                clientes.get(i).setDireccion(direccion);</span>
+<span class="nc" id="L44">                clientes.get(i).setNif(nuevoNif);</span>
+<span class="nc" id="L45">                clientes.get(i).setTelefono(telefono);</span>
+<span class="nc" id="L46">                clientes.get(i).setEdad(edad);</span>
+                
+            }
+        }
+        
+<span class="fc" id="L51">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

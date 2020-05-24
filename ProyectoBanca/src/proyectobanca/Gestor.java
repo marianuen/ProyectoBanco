@@ -13,26 +13,28 @@ import java.util.Scanner;
  * @author maria
  */
 public class Gestor {
-      
-    Scanner sc = new Scanner (System.in);
-    
-    private ArrayList <Cliente> clientes;
-    
-    
-    public void crearPerfil(String nombre, String apellido1, String apellido2, 
-            String direccion, String nif, int telefono, int edad){
-     
-        clientes.add(new Cliente(nombre,apellido1,apellido2,direccion,nif,telefono,edad));
+
+    Scanner sc = new Scanner(System.in);
+
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
     }
-    
+
+    public void crearPerfil(String nombre, String apellido1, String apellido2,
+            String direccion, String nif, int telefono, int edad) {
+
+        clientes.add(new Cliente(nombre, apellido1, apellido2, direccion, nif, telefono, edad));
+    }
+
     public void modificarCliente(String nifCliente, String nombre, String apellido1,
-            String apellido2, String direccion, String nuevoNif, int telefono, int edad){
-        
-        
+            String apellido2, String direccion, String nuevoNif, int telefono, int edad) {
+
         for (int i = 0; i < clientes.size(); i++) {
-            
-            if(clientes.get(i).getNif() == nifCliente){
-                
+
+            if (clientes.get(i).getNif().equals(nifCliente)) {
+
                 clientes.get(i).setNombre(nombre);
                 clientes.get(i).setApellido1(apellido1);
                 clientes.get(i).setApellido2(apellido2);
@@ -40,9 +42,9 @@ public class Gestor {
                 clientes.get(i).setNif(nuevoNif);
                 clientes.get(i).setTelefono(telefono);
                 clientes.get(i).setEdad(edad);
-                
+
             }
         }
-        
+
     }
 }

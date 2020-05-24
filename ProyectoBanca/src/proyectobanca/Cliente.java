@@ -21,7 +21,7 @@ public class Cliente {
     private String nif;
     private int telefono;
     private int edad;
-    private ArrayList<Cuenta> cuentas;
+    private ArrayList<Cuenta> cuentas = new ArrayList <>();
 
     Scanner sc = new Scanner(System.in);
 
@@ -34,6 +34,14 @@ public class Cliente {
         this.telefono = telefono;
         this.edad = edad;
         this.cuentas = new ArrayList<>();
+    }
+
+    public ArrayList<Cuenta> getCuentas() {
+        return cuentas;
+    }
+
+    public void setCuentas(ArrayList<Cuenta> cuentas) {
+        this.cuentas = cuentas;
     }
 
     public void setNombre(String nombre) {
@@ -68,6 +76,30 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido1() {
+        return apellido1;
+    }
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
     public void ingresarDinero(int numeroCuenta, int cantidad) {
 
         for (int i = 0; i < cuentas.size(); i++) {
@@ -89,8 +121,6 @@ public class Cliente {
                         && cuentas.get(i).getLimiteRetiradaCajero() >= cantidad) {
 
                     cuentas.get(i).setSaldo(cuentas.get(i).getSaldo() - cantidad);
-                } else {
-                    System.out.println("No se ha podido realizar la operación");
                 }
 
             }
@@ -121,15 +151,16 @@ public class Cliente {
 
     }
 
-    public void pagosInternet(int numeroCuenta) {
+    public int pagosInternet(int numeroCuenta) {
 
         for (int i = 0; i < cuentas.size(); i++) {
 
             if (cuentas.get(i).getNumCuenta() == numeroCuenta) {
-                System.out.println("El total de pagos realizados por internet es"
-                        + ": " + cuentas.get(i).getTotalCompra());
+               return cuentas.get(i).getTotalCompra();
             }
         }
+        return 0;
 
     }
+
 }

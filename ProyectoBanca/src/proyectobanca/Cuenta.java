@@ -10,7 +10,8 @@ package proyectobanca;
  * @author maria
  */
 public class Cuenta {
-     private int numCuenta;
+    
+    private int numCuenta;
     private int saldo;
     private int limiteRetiradaCajero;
     private int limitePagoInternet;
@@ -53,4 +54,26 @@ public class Cuenta {
     public void setTotalCompra(int totalCompra) {
         this.totalCompra = totalCompra;
     }
+
+    public String getFechaApertura() {
+        return fechaApertura;
+    }
+
+    public void setNumCuenta(int numCuenta) {
+        this.numCuenta = numCuenta;
+    }
+
+    public void setLimiteRetiradaCajero(int limiteRetiradaCajero) {
+        this.limiteRetiradaCajero = limiteRetiradaCajero;
+    }
+
+    public void setLimitePagoInternet(int limitePagoInternet) {
+        this.limitePagoInternet = limitePagoInternet;
+    }
+
+    public void setFechaApertura(String fechaApertura) {
+        this.fechaApertura = fechaApertura;
+    }
+    
+    
 }
